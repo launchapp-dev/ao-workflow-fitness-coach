@@ -1,0 +1,15 @@
+schedules:
+  - id: daily-workout
+    cron: "0 6 * * 1-6"
+    workflow_ref: daily-workout
+    enabled: true
+
+  - id: weekly-review
+    cron: "0 7 * * 1"
+    workflow_ref: weekly-review
+    enabled: true
+
+  - id: monthly-review
+    cron: "0 8 1 * *"
+    workflow_ref: monthly-review
+    enabled: true

@@ -1,0 +1,226 @@
+{
+  "entries": [
+    {
+      "date": "2026-03-16",
+      "day_of_week": "Mon",
+      "sleep_hours": 7.5,
+      "sleep_quality": 4.0,
+      "soreness_avg": 1.8,
+      "soreness_breakdown": {
+        "lower_body": 2.0,
+        "upper_body": 1.5,
+        "back": 1.8
+      },
+      "energy": 4.0,
+      "mood": 4.2,
+      "session_rpe_yesterday": null,
+      "composite_score": 3.97,
+      "notes": "Good Sunday rest. Feel fresh for the week."
+    },
+    {
+      "date": "2026-03-17",
+      "day_of_week": "Tue",
+      "sleep_hours": 7.0,
+      "sleep_quality": 3.8,
+      "soreness_avg": 2.5,
+      "soreness_breakdown": {
+        "lower_body": 3.2,
+        "upper_body": 2.0,
+        "back": 2.2
+      },
+      "energy": 3.5,
+      "mood": 3.8,
+      "session_rpe_yesterday": 7.5,
+      "composite_score": 3.43,
+      "notes": "Legs a bit sore from yesterday's squats. Normal DOMS."
+    },
+    {
+      "date": "2026-03-18",
+      "day_of_week": "Wed",
+      "sleep_hours": 6.5,
+      "sleep_quality": 3.5,
+      "soreness_avg": 2.8,
+      "soreness_breakdown": {
+        "lower_body": 2.5,
+        "upper_body": 3.2,
+        "back": 2.5
+      },
+      "energy": 3.2,
+      "mood": 3.4,
+      "session_rpe_yesterday": 8.0,
+      "composite_score": 3.15,
+      "notes": "Upper back tired from rows. Sleep was shorter than usual — work deadline."
+    },
+    {
+      "date": "2026-03-19",
+      "day_of_week": "Thu",
+      "sleep_hours": 7.2,
+      "sleep_quality": 4.0,
+      "soreness_avg": 2.2,
+      "soreness_breakdown": {
+        "lower_body": 2.0,
+        "upper_body": 2.5,
+        "back": 2.0
+      },
+      "energy": 3.8,
+      "mood": 4.0,
+      "session_rpe_yesterday": null,
+      "composite_score": 3.68,
+      "notes": "Rest day yesterday helped. Feeling more recovered."
+    },
+    {
+      "date": "2026-03-20",
+      "day_of_week": "Fri",
+      "sleep_hours": 6.8,
+      "sleep_quality": 3.5,
+      "soreness_avg": 3.0,
+      "soreness_breakdown": {
+        "lower_body": 3.5,
+        "upper_body": 2.8,
+        "back": 2.8
+      },
+      "energy": 3.3,
+      "mood": 3.5,
+      "session_rpe_yesterday": 8.5,
+      "composite_score": 3.19,
+      "notes": "Heavy deadlift day yesterday. Posterior chain fatigued. Will train lighter today."
+    },
+    {
+      "date": "2026-03-21",
+      "day_of_week": "Sat",
+      "sleep_hours": 8.0,
+      "sleep_quality": 4.5,
+      "soreness_avg": 2.3,
+      "soreness_breakdown": {
+        "lower_body": 2.5,
+        "upper_body": 2.0,
+        "back": 2.5
+      },
+      "energy": 4.2,
+      "mood": 4.5,
+      "session_rpe_yesterday": 7.0,
+      "composite_score": 4.05,
+      "notes": "Great sleep. Saturday morning — best session of the week."
+    },
+    {
+      "date": "2026-03-23",
+      "day_of_week": "Mon",
+      "sleep_hours": 8.0,
+      "sleep_quality": 4.2,
+      "soreness_avg": 1.5,
+      "soreness_breakdown": {
+        "lower_body": 1.5,
+        "upper_body": 1.5,
+        "back": 1.5
+      },
+      "energy": 4.5,
+      "mood": 4.3,
+      "session_rpe_yesterday": null,
+      "composite_score": 4.28,
+      "notes": "Sunday rest fully recovered. Strong start to week 2."
+    },
+    {
+      "date": "2026-03-24",
+      "day_of_week": "Tue",
+      "sleep_hours": 7.0,
+      "sleep_quality": 3.8,
+      "soreness_avg": 2.8,
+      "soreness_breakdown": {
+        "lower_body": 3.5,
+        "upper_body": 2.2,
+        "back": 2.5
+      },
+      "energy": 3.6,
+      "mood": 3.9,
+      "session_rpe_yesterday": 8.0,
+      "composite_score": 3.40,
+      "notes": "Good squat session yesterday. Quads and glutes feeling worked."
+    },
+    {
+      "date": "2026-03-25",
+      "day_of_week": "Wed",
+      "sleep_hours": 7.5,
+      "sleep_quality": 4.0,
+      "soreness_avg": 2.5,
+      "soreness_breakdown": {
+        "lower_body": 2.8,
+        "upper_body": 2.3,
+        "back": 2.5
+      },
+      "energy": 3.8,
+      "mood": 4.0,
+      "session_rpe_yesterday": 7.5,
+      "composite_score": 3.63,
+      "notes": "Rest day. Soreness settling. Looking forward to heavy pulls tomorrow."
+    },
+    {
+      "date": "2026-03-26",
+      "day_of_week": "Thu",
+      "sleep_hours": 7.0,
+      "sleep_quality": 4.0,
+      "soreness_avg": 2.0,
+      "soreness_breakdown": {
+        "lower_body": 2.0,
+        "upper_body": 2.0,
+        "back": 2.0
+      },
+      "energy": 4.0,
+      "mood": 4.1,
+      "session_rpe_yesterday": null,
+      "composite_score": 3.83,
+      "notes": "Ready for heavy day. Recovery has been consistent this week."
+    },
+    {
+      "date": "2026-03-27",
+      "day_of_week": "Fri",
+      "sleep_hours": 6.5,
+      "sleep_quality": 3.2,
+      "soreness_avg": 3.2,
+      "soreness_breakdown": {
+        "lower_body": 3.5,
+        "upper_body": 3.0,
+        "back": 3.2
+      },
+      "energy": 3.0,
+      "mood": 3.3,
+      "session_rpe_yesterday": 9.0,
+      "composite_score": 2.99,
+      "notes": "Hard deadlift session yesterday — RPE 9. Tired but not wrecked. Short sleep."
+    },
+    {
+      "date": "2026-03-28",
+      "day_of_week": "Sat",
+      "sleep_hours": 8.5,
+      "sleep_quality": 4.5,
+      "soreness_avg": 2.5,
+      "soreness_breakdown": {
+        "lower_body": 3.0,
+        "upper_body": 2.2,
+        "back": 2.5
+      },
+      "energy": 4.0,
+      "mood": 4.2,
+      "session_rpe_yesterday": 7.5,
+      "composite_score": 3.89,
+      "notes": "Good recovery sleep. Ready for a solid upper body day."
+    },
+    {
+      "date": "2026-03-30",
+      "day_of_week": "Mon",
+      "sleep_hours": 7.8,
+      "sleep_quality": 4.2,
+      "soreness_avg": 1.8,
+      "soreness_breakdown": {
+        "lower_body": 1.5,
+        "upper_body": 2.0,
+        "back": 1.8
+      },
+      "energy": 4.2,
+      "mood": 4.4,
+      "session_rpe_yesterday": null,
+      "composite_score": 4.10,
+      "notes": "Week 3 begins. Good rest over the weekend."
+    }
+  ],
+  "last_updated": "2026-03-30"
+}

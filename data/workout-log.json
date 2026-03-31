@@ -1,0 +1,347 @@
+{
+  "weekly_plan_sessions": 4,
+  "sessions": [
+    {
+      "date": "2026-03-16",
+      "day_type": "Upper A — Strength Focus",
+      "week": 1,
+      "mesocycle_day": 1,
+      "completed": true,
+      "rpe": 7.5,
+      "duration_min": 70,
+      "exercises": [
+        {
+          "name": "Barbell Bench Press",
+          "lift_category": "bench",
+          "sets": [
+            {"set_number": 1, "weight_kg": 75.0, "reps": 5, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 75.0, "reps": 5, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 75.0, "reps": 5, "rpe": 7.5, "working_set": true},
+            {"set_number": 4, "weight_kg": 75.0, "reps": 5, "rpe": 7.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Barbell Row",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 70.0, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 70.0, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 70.0, "reps": 6, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 70.0, "reps": 5, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Incline Dumbbell Press",
+          "lift_category": "chest",
+          "sets": [
+            {"set_number": 1, "weight_kg": 28.0, "reps": 10, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 28.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 28.0, "reps": 9, "rpe": 7.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Chin-Up",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 0, "reps": 8, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 0, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 0, "reps": 7, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "First session of mesocycle 1. Technique felt good on bench. Rows strong."
+    },
+    {
+      "date": "2026-03-17",
+      "day_type": "Lower A — Squat Focus",
+      "week": 1,
+      "mesocycle_day": 2,
+      "completed": true,
+      "rpe": 8.0,
+      "duration_min": 75,
+      "exercises": [
+        {
+          "name": "Back Squat",
+          "lift_category": "squat",
+          "sets": [
+            {"set_number": 1, "weight_kg": 85.0, "reps": 5, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 85.0, "reps": 5, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 85.0, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 85.0, "reps": 5, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Romanian Deadlift",
+          "lift_category": "hamstrings",
+          "sets": [
+            {"set_number": 1, "weight_kg": 80.0, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 80.0, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 80.0, "reps": 8, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Bulgarian Split Squat",
+          "lift_category": "quads",
+          "sets": [
+            {"set_number": 1, "weight_kg": 22.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 22.0, "reps": 10, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 22.0, "reps": 8, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Squats felt heavy but form was solid. BSS burned. Good pump."
+    },
+    {
+      "date": "2026-03-19",
+      "day_type": "Upper B — Volume Focus",
+      "week": 1,
+      "mesocycle_day": 3,
+      "completed": true,
+      "rpe": 7.0,
+      "duration_min": 65,
+      "exercises": [
+        {
+          "name": "Overhead Press",
+          "lift_category": "ohp",
+          "sets": [
+            {"set_number": 1, "weight_kg": 50.0, "reps": 6, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 50.0, "reps": 6, "rpe": 7.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 50.0, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 4, "weight_kg": 50.0, "reps": 5, "rpe": 7.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Dumbbell Row",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 36.0, "reps": 10, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 36.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 36.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 4, "weight_kg": 36.0, "reps": 9, "rpe": 7.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Dumbbell Bench Press",
+          "lift_category": "bench",
+          "sets": [
+            {"set_number": 1, "weight_kg": 32.0, "reps": 12, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 32.0, "reps": 12, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 32.0, "reps": 10, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Volume day. Kept rest shorter. Good pump. OHP felt clean."
+    },
+    {
+      "date": "2026-03-20",
+      "day_type": "Lower B — Deadlift Focus",
+      "week": 1,
+      "mesocycle_day": 4,
+      "completed": true,
+      "rpe": 8.5,
+      "duration_min": 80,
+      "exercises": [
+        {
+          "name": "Conventional Deadlift",
+          "lift_category": "deadlift",
+          "sets": [
+            {"set_number": 1, "weight_kg": 110.0, "reps": 5, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 110.0, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 110.0, "reps": 5, "rpe": 8.5, "working_set": true},
+            {"set_number": 4, "weight_kg": 110.0, "reps": 4, "rpe": 8.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Good Morning",
+          "lift_category": "hamstrings",
+          "sets": [
+            {"set_number": 1, "weight_kg": 60.0, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 60.0, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 60.0, "reps": 7, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Kettlebell Swing",
+          "lift_category": "conditioning",
+          "sets": [
+            {"set_number": 1, "weight_kg": 24.0, "reps": 15, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 24.0, "reps": 15, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 24.0, "reps": 15, "rpe": 7.5, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Pulled 110kg×5 — felt heavy but hip position good. Back held up well."
+    },
+    {
+      "date": "2026-03-23",
+      "day_type": "Upper A — Strength Focus",
+      "week": 2,
+      "mesocycle_day": 5,
+      "completed": true,
+      "rpe": 8.0,
+      "duration_min": 72,
+      "exercises": [
+        {
+          "name": "Barbell Bench Press",
+          "lift_category": "bench",
+          "sets": [
+            {"set_number": 1, "weight_kg": 77.5, "reps": 5, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 77.5, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 77.5, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 77.5, "reps": 4, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Barbell Row",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 72.5, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 72.5, "reps": 6, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 72.5, "reps": 6, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 72.5, "reps": 6, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Incline Dumbbell Press",
+          "lift_category": "chest",
+          "sets": [
+            {"set_number": 1, "weight_kg": 28.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 28.0, "reps": 10, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 28.0, "reps": 9, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Chin-Up",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 0, "reps": 9, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 0, "reps": 8, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 0, "reps": 7, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Week 2 load increase. 77.5kg bench. Felt strong off the Monday rest."
+    },
+    {
+      "date": "2026-03-24",
+      "day_type": "Lower A — Squat Focus",
+      "week": 2,
+      "mesocycle_day": 6,
+      "completed": true,
+      "rpe": 8.5,
+      "duration_min": 78,
+      "exercises": [
+        {
+          "name": "Back Squat",
+          "lift_category": "squat",
+          "sets": [
+            {"set_number": 1, "weight_kg": 90.0, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 90.0, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 90.0, "reps": 5, "rpe": 8.5, "working_set": true},
+            {"set_number": 4, "weight_kg": 90.0, "reps": 4, "rpe": 9.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Romanian Deadlift",
+          "lift_category": "hamstrings",
+          "sets": [
+            {"set_number": 1, "weight_kg": 82.5, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 82.5, "reps": 8, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 82.5, "reps": 7, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Bulgarian Split Squat",
+          "lift_category": "quads",
+          "sets": [
+            {"set_number": 1, "weight_kg": 24.0, "reps": 10, "rpe": 8.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 24.0, "reps": 10, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 24.0, "reps": 8, "rpe": 8.5, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Heavy squat day. Last set was tough. Form held. BSS load increase felt right."
+    },
+    {
+      "date": "2026-03-26",
+      "day_type": "Upper B — Volume Focus",
+      "week": 2,
+      "mesocycle_day": 7,
+      "completed": true,
+      "rpe": 7.5,
+      "duration_min": 68,
+      "exercises": [
+        {
+          "name": "Overhead Press",
+          "lift_category": "ohp",
+          "sets": [
+            {"set_number": 1, "weight_kg": 52.5, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 52.5, "reps": 6, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 52.5, "reps": 6, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 52.5, "reps": 5, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Dumbbell Row",
+          "lift_category": "back",
+          "sets": [
+            {"set_number": 1, "weight_kg": 38.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 38.0, "reps": 10, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 38.0, "reps": 10, "rpe": 8.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 38.0, "reps": 9, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Dumbbell Bench Press",
+          "lift_category": "bench",
+          "sets": [
+            {"set_number": 1, "weight_kg": 34.0, "reps": 12, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 34.0, "reps": 11, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 34.0, "reps": 10, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "Volume maintained. OHP up to 52.5kg. Rows feeling strong."
+    },
+    {
+      "date": "2026-03-27",
+      "day_type": "Lower B — Deadlift Focus",
+      "week": 2,
+      "mesocycle_day": 8,
+      "completed": true,
+      "rpe": 9.0,
+      "duration_min": 82,
+      "exercises": [
+        {
+          "name": "Conventional Deadlift",
+          "lift_category": "deadlift",
+          "sets": [
+            {"set_number": 1, "weight_kg": 115.0, "reps": 5, "rpe": 8.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 115.0, "reps": 5, "rpe": 8.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 115.0, "reps": 5, "rpe": 9.0, "working_set": true},
+            {"set_number": 4, "weight_kg": 115.0, "reps": 3, "rpe": 9.5, "working_set": true}
+          ]
+        },
+        {
+          "name": "Good Morning",
+          "lift_category": "hamstrings",
+          "sets": [
+            {"set_number": 1, "weight_kg": 62.5, "reps": 8, "rpe": 7.5, "working_set": true},
+            {"set_number": 2, "weight_kg": 62.5, "reps": 8, "rpe": 8.0, "working_set": true},
+            {"set_number": 3, "weight_kg": 62.5, "reps": 7, "rpe": 8.0, "working_set": true}
+          ]
+        },
+        {
+          "name": "Kettlebell Swing",
+          "lift_category": "conditioning",
+          "sets": [
+            {"set_number": 1, "weight_kg": 24.0, "reps": 15, "rpe": 7.0, "working_set": true},
+            {"set_number": 2, "weight_kg": 24.0, "reps": 15, "rpe": 7.5, "working_set": true},
+            {"set_number": 3, "weight_kg": 24.0, "reps": 15, "rpe": 8.0, "working_set": true}
+          ]
+        }
+      ],
+      "notes": "115kg×5 deadlift. RPE 9 on last work sets. 4th set dropped to 3 reps. Strong but fatigued."
+    }
+  ]
+}

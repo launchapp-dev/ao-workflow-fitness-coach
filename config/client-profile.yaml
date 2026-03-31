@@ -1,0 +1,71 @@
+client:
+  name: "Alex Chen"
+  age: 28
+  sex: male
+  height_cm: 178
+  weight_kg: 82
+  body_fat_estimate_pct: 18
+
+goals:
+  primary: "Strength increase — focus on squat, deadlift, bench press"
+  secondary: "Body recomposition — reduce body fat to ~14% while maintaining muscle"
+  timeline: "6 months"
+  notes: "Alex wants to compete in a local powerlifting meet in 6 months. Currently training recreationally."
+
+training_history:
+  years_lifting: 3
+  consistency: "Moderate — 3-4x/week for past 18 months, some gaps (1-2 month breaks twice)"
+  previous_programs:
+    - "Reddit PPL (6 months)"
+    - "5/3/1 Boring But Big (4 months)"
+    - "Unstructured (current)"
+  experience_with_rpe: true
+  experience_with_percentages: true
+  coaching_history: "Self-coached only"
+
+availability:
+  days_per_week: 4
+  preferred_days: [Monday, Tuesday, Thursday, Friday]
+  session_length_minutes: 75
+  time_of_day: morning
+
+equipment:
+  - barbell
+  - squat_rack
+  - adjustable_bench
+  - dumbbells_up_to_40kg
+  - pull_up_bar
+  - resistance_bands
+  - kettlebell_24kg
+  - rowing_machine
+
+recent_lifts:
+  squat_1rm_estimate_kg: 120  # 5 reps at 105kg
+  deadlift_1rm_estimate_kg: 150  # 3 reps at 140kg
+  bench_1rm_estimate_kg: 95   # 5 reps at 82.5kg
+  ohp_1rm_estimate_kg: 65     # 5 reps at 55kg
+  chin_up_max_reps: 10        # bodyweight
+
+injury_history:
+  - injury: "Lower back strain"
+    date: "2024-06"
+    resolved: true
+    notes: "Tweaked deadlifting with rounded lower back. Avoided heavy pulling for 8 weeks. Now pain-free."
+  - injury: "Left shoulder impingement"
+    date: "2023-11"
+    resolved: true
+    notes: "Overhead pressing with too much forward lean. Corrected technique, resolved with rotator cuff work."
+
+movement_notes:
+  squat: "Moderate depth — can squat to parallel, slightly below with good form. Slight forward lean at depth."
+  deadlift: "Conventional stance. Good bracing. Avoid excessive lumbar flexion under heavy load."
+  bench: "Good shoulder position. Avoid wide grip variations due to previous impingement history."
+  overhead: "Acceptable. Coach to monitor shoulder position. Avoid behind-the-neck pressing."
+  pulling: "Strong — good scapular control from prior PT work."
+
+lifestyle:
+  sleep_hours_avg: 7.0
+  stress_level: moderate
+  occupation: "Software engineer — desk job, sedentary during work hours"
+  nutrition: "Moderate — tracks protein loosely, targets 160g/day protein. Not in a deficit or surplus."
+  supplements: [creatine_monohydrate, protein_powder, vitamin_d]

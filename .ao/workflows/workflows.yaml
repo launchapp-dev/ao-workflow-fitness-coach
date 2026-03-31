@@ -1,0 +1,85 @@
+default_workflow_ref: onboard-client
+
+workflows:
+  - id: onboard-client
+    name: "Onboard New Client"
+    description: "One-time setup: assess baseline fitness, calculate strength benchmarks, design the first mesocycle, and generate the first week of workouts."
+    phases:
+      - assess-baseline
+      - calculate-benchmarks
+      - design-program
+      - generate-first-week
+    post_success:
+      merge:
+        strategy: squash
+        target_branch: main
+        create_pr: true
+        auto_merge: true
+        cleanup_worktree: true
+
+  - id: daily-workout
+    name: "Daily Workout Generation"
+    description: "Log recovery data, assess readiness, and generate today's workout. Routes to rest-day if recovery signals indicate overtraining."
+    phases:
+      - log-recovery
+      - check-readiness:
+          on_verdict:
+            fresh:
+              target: generate-workout
+            moderate:
+              target: generate-workout
+            fatigued:
+              target: generate-workout
+            overtrained:
+              target: force-rest-day
+      - generate-workout
+      - force-rest-day
+
+  - id: weekly-review
+    name: "Weekly Progress Review"
+    description: "Calculate weekly metrics, analyze training vs targets, adjust next week's intensity, verify safety of adjustments, and compile the weekly report."
+    phases:
+      - calculate-progress
+      - analyze-week
+      - adjust-intensity
+      - verify-adjustment:
+          on_verdict:
+            approve:
+              target: compile-weekly-report
+            rework:
+              target: adjust-intensity
+          max_rework_attempts: 2
+      - compile-weekly-report
+    post_success:
+      merge:
+        strategy: squash
+        target_branch: main
+        create_pr: true
+        auto_merge: true
+        cleanup_worktree: true
+
+  - id: monthly-review
+    name: "Monthly Program Evaluation"
+    description: "Aggregate monthly metrics, evaluate mesocycle effectiveness, make progression decision (advance/maintain/deload/redesign), and compile the monthly report."
+    phases:
+      - calculate-monthly-metrics
+      - evaluate-program:
+          on_verdict:
+            advance:
+              target: progress-program
+            maintain:
+              target: compile-monthly-report
+            deload:
+              target: compile-monthly-report
+            redesign:
+              target: redesign-program
+      - progress-program
+      - redesign-program
+      - compile-monthly-report
+    post_success:
+      merge:
+        strategy: squash
+        target_branch: main
+        create_pr: true
+        auto_merge: true
+        cleanup_worktree: true

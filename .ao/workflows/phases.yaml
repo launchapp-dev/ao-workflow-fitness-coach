@@ -1,0 +1,385 @@
+phases:
+  # ─── onboard-client phases ────────────────────────────────────────────────
+
+  assess-baseline:
+    mode: agent
+    agent: assessment-specialist
+    directive: |
+      Read config/client-profile.yaml to understand the client's background, goals, training history,
+      and available equipment. Then conduct a comprehensive baseline assessment:
+
+      1. Determine training age from the history (years of consistent training, program adherence)
+      2. Establish estimated baseline strength (use stated maxes or rep-max data in the profile)
+      3. Rate mobility in key patterns from any notes in the profile (assume moderate if no data)
+      4. Classify work capacity from conditioning history
+      5. Identify all injury history and movement limitations
+      6. Recommend the appropriate weekly training split given goals and days available
+
+      Write the assessment results to data/assessment.json.
+      Return structured output JSON with all required fields.
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    output_contract:
+      required_fields:
+        - goals
+        - training_age
+        - baseline_strength
+        - mobility_scores
+        - work_capacity
+        - limitations
+        - recommended_split
+        - equipment_available
+
+  calculate-benchmarks:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/calculate-benchmarks.sh"]
+      cwd_mode: project_root
+      timeout_secs: 60
+
+  design-program:
+    mode: agent
+    agent: program-designer
+    directive: |
+      Read data/assessment.json and config/periodization-templates.yaml.
+      Design a 4-week mesocycle (mesocycle 1) tailored to this client:
+
+      1. Choose the appropriate periodization model based on training age (linear for novice, DUP for intermediate/advanced)
+      2. Design the weekly training split (match the recommended_split from assessment)
+      3. For each training day, prescribe:
+         - Primary compound movements with sets × reps × %1RM (or RPE targets)
+         - 3-4 accessory exercises with sets × reps (load as RPE 7-8)
+         - Rest periods appropriate to goal (strength = 3-5 min main, 90s accessory)
+      4. Set week-over-week progression targets (load increases per exercise)
+      5. Mark week 4 as the deload week (50-60% volume, maintained intensity)
+      6. Select exercises from config/exercise-library.yaml that match available equipment
+
+      Use sequential-thinking to work through the periodization logic before committing to the design.
+      Write the complete program to data/current-program.json.
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  generate-first-week:
+    mode: agent
+    agent: workout-generator
+    directive: |
+      Read data/current-program.json and data/assessment.json.
+      Generate workout files for the first week of the program (7 days, with rest days clearly marked).
+
+      For each training day:
+      - Use "fresh" readiness (new program, full prescribed intensity)
+      - Translate the program template into specific weights (kg) based on assessment benchmarks
+      - Write a complete workout markdown file to workouts/week-1-day-<N>.md
+
+      For rest days: write a brief mobility/recovery routine to workouts/week-1-day-<N>-rest.md
+
+      Format each workout file with:
+      - Header showing date placeholder, training type, week/day in mesocycle
+      - Warm-up block (specific movements, 5-10 min)
+      - Main work table (exercise | sets × reps | load kg | rest sec | RPE target)
+      - Accessory block
+      - Cooldown stretching (5 min, targeted)
+      - Estimated total session time
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  # ─── daily-workout phases ─────────────────────────────────────────────────
+
+  log-recovery:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/log-recovery.sh"]
+      cwd_mode: project_root
+      timeout_secs: 30
+
+  check-readiness:
+    mode: agent
+    agent: recovery-analyst
+    directive: |
+      Read data/recovery-log.json and get today's check-in (the most recent entry).
+      Also read data/workout-log.json to see the last 3 days of training intensity (RPE).
+      Read config/recovery-thresholds.yaml for scoring parameters.
+
+      Calculate the readiness composite score and output a verdict:
+      - fresh (≥ 4.0): train at prescribed intensity
+      - moderate (3.0-3.9): minor intensity reduction (5-10% load reduction)
+      - fatigued (2.0-2.9): significant reduction (deload session parameters)
+      - overtrained (< 2.0): mandatory rest — write rest day and stop workout generation
+
+      Return JSON with: verdict, readiness_score, top_signal, brief_notes
+    decision_contract:
+      required_fields:
+        - verdict
+        - readiness_score
+        - top_signal
+
+  generate-workout:
+    mode: agent
+    agent: workout-generator
+    directive: |
+      Read data/current-program.json to find today's scheduled training session.
+      Read data/recovery-log.json for today's readiness verdict from the previous check-readiness phase.
+      Read data/workout-log.json to see what weights were used in recent sessions (for continuity).
+
+      Determine today's training day type from the mesocycle structure (what day of the split is it?
+      Look at the workout log to identify the last completed day and pick the next scheduled training day).
+
+      Generate today's complete workout and write it to workouts/{{subject_title}}-$(date +%Y-%m-%d).md
+      using the readiness verdict to scale intensity appropriately.
+
+      After writing the file, return JSON with: status, workout_path, training_day_type, readiness_applied
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  force-rest-day:
+    mode: agent
+    agent: workout-generator
+    directive: |
+      The recovery analyst has flagged an overtrained status. No loaded training today.
+
+      Generate a recovery and mobility session and write it to workouts/$(date +%Y-%m-%d)-rest.md.
+      The session should include:
+      1. 10 min light walking or cycling (low intensity, HR < 120 bpm)
+      2. Foam rolling: quads, IT band, thoracic spine, lats (2 min per area)
+      3. Hip flexor and hamstring stretching (hold 60s each side)
+      4. Shoulder mobility work (band pull-aparts, arm circles, thoracic rotations)
+      5. Breathing practice (diaphragmatic breathing, 5 min)
+      6. Optional: contrast shower or cold exposure
+
+      Include coaching note: "Your body needs recovery today. This is part of the program, not a setback."
+      Return JSON with: status, workout_path, reason
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  # ─── weekly-review phases ─────────────────────────────────────────────────
+
+  calculate-progress:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/calculate-progress.sh"]
+      cwd_mode: project_root
+      timeout_secs: 60
+
+  analyze-week:
+    mode: agent
+    agent: progress-tracker
+    directive: |
+      Read data/progress-metrics.json (just calculated by the calculate-progress script).
+      Read data/workout-log.json to review this week's completed sessions in detail.
+      Read data/current-program.json to compare actual vs programmed targets.
+      Read data/recovery-log.json to identify recovery trends over the week.
+
+      Analyze the week comprehensively:
+      1. Calculate adherence percentage (completed sessions / scheduled sessions)
+      2. Assess volume trend (total working sets vs previous week — read data/history/ for comparison)
+      3. Track estimated 1RM changes for squat, deadlift, bench, and OHP
+      4. Identify average RPE across sessions
+      5. Assess recovery trend (average composite score this week vs last 7 days)
+      6. Flag any concerns: missed sessions, RPE > 9, declining strength, poor recovery
+
+      Return structured JSON with all required fields. Be honest about concerns — catching problems early is the job.
+    output_contract:
+      required_fields:
+        - adherence_pct
+        - volume_trend
+        - strength_trend
+        - recovery_trend
+        - avg_rpe
+        - concerns
+        - highlights
+
+  adjust-intensity:
+    mode: agent
+    agent: program-designer
+    directive: |
+      Read data/progress-metrics.json and the analyze-week output (available in the task context).
+      Read data/current-program.json to see the current mesocycle structure.
+
+      Based on the weekly analysis, adjust next week's program parameters:
+      1. If adherence ≥ 80% and strength trending up → apply planned progressive overload (increase loads as scheduled)
+      2. If adherence ≥ 80% but strength stalling → maintain loads, increase reps or add set
+      3. If adherence 60-79% or avg RPE > 8.5 → maintain loads, do not increase volume
+      4. If adherence < 60% or recovery declining → reduce volume 10-15%, maintain intensity
+      5. If approaching deload week → begin deload protocol (cut volume 50-60%)
+
+      Update data/current-program.json with adjusted week parameters.
+      Return JSON with: adjustments_made (array), rationale, next_week_focus, week_number
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  verify-adjustment:
+    mode: agent
+    agent: recovery-analyst
+    directive: |
+      Review the program adjustment just made by the program-designer.
+      Read data/current-program.json to see the updated next week parameters.
+      Read data/recovery-log.json for the last 7 days of recovery data.
+      Read data/workout-log.json for the last 7 days of session RPE.
+
+      Evaluate whether the proposed adjustments are safe and appropriate given the current recovery state:
+      1. If the adjustment increases load while recovery trend is declining → rework
+      2. If the adjustment maintains or reduces load while recovery trend is improving → approve
+      3. If the adjustment is a deload while the client is showing overtrained signals → approve
+      4. If there are unresolved injury flags in the recovery log → rework (flag for assessment)
+
+      Return JSON with: verdict (approve or rework), reason, safety_concerns (array, empty if none)
+    decision_contract:
+      required_fields:
+        - verdict
+        - reason
+        - safety_concerns
+
+  compile-weekly-report:
+    mode: agent
+    agent: report-compiler
+    directive: |
+      Generate the weekly progress report for this client.
+
+      Read the following:
+      - data/progress-metrics.json (weekly metrics)
+      - data/workout-log.json (session details for the week)
+      - data/recovery-log.json (recovery scores for the week)
+      - data/current-program.json (next week's adjusted plan)
+
+      Write the report to reports/weekly-review-$(date +%Y-%m-%d).md.
+      Include:
+      1. Week in Review (narrative)
+      2. Performance metrics table (planned vs actual per session)
+      3. Strength progress (estimated 1RM changes per main lift)
+      4. Recovery snapshot (avg score, trend, sleep highlights)
+      5. Coaching notes (specific, actionable, positive)
+      6. Next week preview (adjusted loads and focus)
+
+      Return JSON with: status, report_path
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    output_contract:
+      required_fields:
+        - status
+        - report_path
+
+  # ─── monthly-review phases ────────────────────────────────────────────────
+
+  calculate-monthly-metrics:
+    mode: command
+    command:
+      program: bash
+      args: ["-c", "bash scripts/calculate-monthly.sh"]
+      cwd_mode: project_root
+      timeout_secs: 90
+
+  evaluate-program:
+    mode: agent
+    agent: program-designer
+    directive: |
+      Read data/progress-metrics.json for the monthly aggregated metrics.
+      Read all files in data/history/ to review the 4-week trend data.
+      Read data/current-program.json to understand the mesocycle structure being evaluated.
+      Read data/assessment.json to compare current performance vs baseline.
+
+      Conduct a full program evaluation using sequential-thinking to reason through the decision:
+      1. Compare month-end estimated 1RMs vs month-start (from assessment or prior month snapshot)
+      2. Assess volume progression trend (was volume building appropriately through the mesocycle?)
+      3. Evaluate recovery capacity trend (improving, stable, or declining over the month?)
+      4. Check adherence consistency across all 4 weeks
+      5. Identify any persistent concerns or injury flags
+
+      Make a program progression decision:
+      - advance: client is making progress, ready for next mesocycle phase (increase intensity/complexity)
+      - maintain: good adherence but progress slower than expected — repeat this mesocycle phase
+      - deload: recovery declining, high cumulative fatigue — insert recovery week before next mesocycle
+      - redesign: goals have changed, plateau detected, or injury requires fundamental program change
+
+      Return JSON with: verdict, reasoning, metrics_summary (object with key numbers)
+    decision_contract:
+      required_fields:
+        - verdict
+        - reasoning
+        - metrics_summary
+
+  progress-program:
+    mode: agent
+    agent: program-designer
+    directive: |
+      The monthly evaluation has returned verdict: advance.
+      The client is ready for the next mesocycle phase.
+
+      Read data/current-program.json and data/assessment.json.
+      Design the next 4-week mesocycle (mesocycle 2) that builds on the current one:
+      1. Increase baseline loads by 5-10% (lower body) or 2.5-5% (upper body) from current program targets
+      2. Optionally increase weekly volume by 1-2 sets per muscle group (if recovery was consistently good)
+      3. Progress exercise selection (advance variations if client has mastered current ones)
+      4. Maintain the periodization model or advance to a more complex model if training age justifies
+      5. Schedule new deload in week 4 of the new mesocycle
+
+      Use sequential-thinking to reason through load selection and volume targets.
+      Write the new program to data/current-program.json (archive the old one to data/history/program-<date>.json first).
+      Return JSON with: new_mesocycle_name, key_changes (array), baseline_load_increases (object per lift)
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  redesign-program:
+    mode: agent
+    agent: program-designer
+    directive: |
+      The monthly evaluation has returned verdict: redesign.
+      A fundamental program change is needed.
+
+      Read data/current-program.json, data/assessment.json, and config/client-profile.yaml.
+      Review the reasoning from the evaluate-program phase for what needs to change.
+
+      Redesign the program from scratch considering:
+      1. Updated goals (if goals have changed, what are the new primary objectives?)
+      2. Current performance level (use month-end estimated 1RMs as new baseline)
+      3. Any injury constraints identified during the evaluation
+      4. Recovery capacity (if declining → lower starting volume)
+      5. Plateau-breaking strategies (exercise variation, periodization model change, deload first)
+
+      Use sequential-thinking for the full redesign process.
+      Archive the old program to data/history/program-<date>.json.
+      Write the new program to data/current-program.json.
+      Return JSON with: redesign_reason, new_program_summary, key_changes (array)
+    capabilities:
+      mutates_state: true
+      writes_files: true
+
+  compile-monthly-report:
+    mode: agent
+    agent: report-compiler
+    directive: |
+      Generate the comprehensive monthly progress report.
+
+      Read the following:
+      - data/progress-metrics.json (monthly aggregated metrics)
+      - data/history/ (all weekly snapshots)
+      - data/assessment.json (baseline for comparison)
+      - data/current-program.json (the new program, if just advanced or redesigned)
+
+      Write the report to reports/monthly-review-$(date +%Y-%m).md.
+      Include:
+      1. Month in Review (narrative paragraph: what was accomplished)
+      2. Strength Progress table (estimated 1RM start vs end per lift, kg and % change)
+      3. Volume Analysis (4-week volume trend as ASCII bar chart)
+      4. Recovery Capacity trend (weekly average composite scores)
+      5. Program Decision summary (advance/maintain/deload/redesign with rationale)
+      6. Next Mesocycle Preview (key focus areas, load targets, any program changes)
+
+      Return JSON with: status, report_path
+    capabilities:
+      mutates_state: true
+      writes_files: true
+    output_contract:
+      required_fields:
+        - status
+        - report_path

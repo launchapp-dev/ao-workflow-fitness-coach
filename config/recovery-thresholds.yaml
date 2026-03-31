@@ -1,0 +1,83 @@
+recovery_scoring:
+  description: "Composite recovery scoring used by the recovery-analyst agent to determine daily readiness verdict."
+
+  inputs:
+    sleep_hours:
+      weight: 0.40
+      scoring:
+        excellent: { range: ">= 8.0", score: 5.0 }
+        good:      { range: "7.0-7.9", score: 4.0 }
+        moderate:  { range: "6.0-6.9", score: 3.0 }
+        poor:      { range: "5.0-5.9", score: 2.0 }
+        critical:  { range: "< 5.0",   score: 1.0 }
+    sleep_quality:
+      weight: 0.0  # incorporated into sleep_hours as multiplier
+      note: "Self-reported 1-5. Multiply sleep_hours score by (quality / 5) to get adjusted score."
+    soreness:
+      weight: 0.25
+      scoring:
+        none:      { range: "1.0-1.5", score: 5.0 }
+        minimal:   { range: "1.5-2.5", score: 4.0 }
+        moderate:  { range: "2.5-3.5", score: 3.0 }
+        significant: { range: "3.5-4.5", score: 2.0 }
+        severe:    { range: "4.5-5.0", score: 1.0 }
+      note: "Average soreness across all muscle groups (1-5 scale from check-in form)."
+    energy:
+      weight: 0.20
+      scoring:
+        high:      { range: "4.5-5.0", score: 5.0 }
+        good:      { range: "3.5-4.4", score: 4.0 }
+        moderate:  { range: "2.5-3.4", score: 3.0 }
+        low:       { range: "1.5-2.4", score: 2.0 }
+        depleted:  { range: "1.0-1.4", score: 1.0 }
+    mood:
+      weight: 0.15
+      scoring:
+        great:     { range: "4.5-5.0", score: 5.0 }
+        good:      { range: "3.5-4.4", score: 4.0 }
+        neutral:   { range: "2.5-3.4", score: 3.0 }
+        poor:      { range: "1.5-2.4", score: 2.0 }
+        bad:       { range: "1.0-1.4", score: 1.0 }
+
+  composite_formula: |
+    adjusted_sleep = sleep_score * (sleep_quality / 5)
+    composite = (adjusted_sleep * 0.40) + (soreness_score * 0.25) + (energy_score * 0.20) + (mood_score * 0.15)
+
+  verdicts:
+    fresh:
+      composite_min: 4.0
+      description: "Train as prescribed. Full intensity."
+      intensity_modifier: 1.0
+    moderate:
+      composite_min: 3.0
+      composite_max: 3.99
+      description: "Slight reduction. Reduce loads 5-10%, maintain sets and reps."
+      intensity_modifier: 0.925
+    fatigued:
+      composite_min: 2.0
+      composite_max: 2.99
+      description: "Significant reduction. Use deload parameters (50-60% volume, 85-90% load)."
+      intensity_modifier: 0.85
+    overtrained:
+      composite_max: 1.99
+      description: "Mandatory rest day. No loaded training."
+      intensity_modifier: 0.0
+
+  override_conditions:
+    # These conditions trigger immediate downgrade regardless of composite score
+    - condition: "sleep_hours < 5.0"
+      automatic_verdict: fatigued
+      reason: "Insufficient sleep duration. Minimum 5h required for safe training."
+    - condition: "sleep_hours < 5.0 AND soreness > 4.0"
+      automatic_verdict: overtrained
+      reason: "Critical sleep deficit combined with high soreness. Rest is mandatory."
+    - condition: "days_since_last_rest_day >= 6"
+      automatic_verdict: fatigued
+      reason: "6+ consecutive training days. Scheduled rest required."
+    - condition: "previous_day_rpe >= 9.5"
+      automatic_verdict_max: moderate
+      reason: "Extremely hard session yesterday. Cap at moderate regardless of composite."
+
+  consecutive_overtraining:
+    description: "If overtrained verdict is triggered 3+ days in a row, alert the program-designer to reassess workload."
+    alert_threshold: 3

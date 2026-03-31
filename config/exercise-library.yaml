@@ -1,0 +1,253 @@
+exercises:
+  # ─── SQUAT PATTERN ───────────────────────────────────────────────────────
+
+  - id: back_squat
+    name: "Barbell Back Squat"
+    pattern: squat
+    primary_muscles: [quads, glutes]
+    secondary_muscles: [hamstrings, core, upper_back]
+    equipment: [barbell, squat_rack]
+    difficulty: intermediate
+    notes: "Primary lower body strength movement. Cue: chest up, knees track toes, full depth."
+
+  - id: front_squat
+    name: "Barbell Front Squat"
+    pattern: squat
+    primary_muscles: [quads, core]
+    secondary_muscles: [glutes, upper_back]
+    equipment: [barbell, squat_rack]
+    difficulty: advanced
+    notes: "More quad-dominant than back squat. Requires good thoracic mobility."
+
+  - id: goblet_squat
+    name: "Goblet Squat"
+    pattern: squat
+    primary_muscles: [quads, glutes]
+    secondary_muscles: [core]
+    equipment: [kettlebell, dumbbell]
+    difficulty: beginner
+    notes: "Great warm-up and technique drill. Counter-balance helps squat depth."
+
+  - id: bulgarian_split_squat
+    name: "Bulgarian Split Squat"
+    pattern: squat
+    primary_muscles: [quads, glutes]
+    secondary_muscles: [hamstrings, hip_flexors]
+    equipment: [dumbbells, bench]
+    difficulty: intermediate
+    notes: "High quad and glute demand. Balance challenge. Use DB holds or goblet position."
+
+  - id: leg_press
+    name: "Leg Press"
+    pattern: squat
+    primary_muscles: [quads, glutes]
+    secondary_muscles: [hamstrings]
+    equipment: [leg_press_machine]
+    difficulty: beginner
+    notes: "Lower back-friendly squat accessory. Not available in this client's home gym."
+
+  # ─── HINGE PATTERN ────────────────────────────────────────────────────────
+
+  - id: conventional_deadlift
+    name: "Conventional Deadlift"
+    pattern: hinge
+    primary_muscles: [hamstrings, glutes, erectors]
+    secondary_muscles: [quads, lats, traps, core]
+    equipment: [barbell]
+    difficulty: intermediate
+    notes: "Primary posterior chain movement. Cue: lat engagement, neutral spine, drive floor away."
+    caution: "Monitor lumbar position carefully given client's history of lower back strain."
+
+  - id: romanian_deadlift
+    name: "Romanian Deadlift (RDL)"
+    pattern: hinge
+    primary_muscles: [hamstrings, glutes]
+    secondary_muscles: [erectors, lats]
+    equipment: [barbell, dumbbells]
+    difficulty: intermediate
+    notes: "Hip hinge with loaded stretch. Excellent hamstring builder. Load is lower than conventional."
+
+  - id: trap_bar_deadlift
+    name: "Trap Bar Deadlift"
+    pattern: hinge
+    primary_muscles: [hamstrings, glutes, quads]
+    secondary_muscles: [erectors, traps]
+    equipment: [trap_bar]
+    difficulty: beginner
+    notes: "More upright torso than conventional. Not available — use as substitute suggestion only."
+
+  - id: good_morning
+    name: "Good Morning"
+    pattern: hinge
+    primary_muscles: [hamstrings, erectors]
+    secondary_muscles: [glutes, core]
+    equipment: [barbell]
+    difficulty: intermediate
+    notes: "Barbell hinge from shoulders. Keep weight light-moderate. Excellent erector developer."
+
+  - id: kb_swing
+    name: "Kettlebell Swing"
+    pattern: hinge
+    primary_muscles: [glutes, hamstrings]
+    secondary_muscles: [core, lats, shoulders]
+    equipment: [kettlebell]
+    difficulty: intermediate
+    notes: "Explosive hip hinge. Great for power and conditioning. Available: 24kg KB."
+
+  # ─── PUSH PATTERN (HORIZONTAL) ────────────────────────────────────────────
+
+  - id: bench_press
+    name: "Barbell Bench Press"
+    pattern: push_horizontal
+    primary_muscles: [chest, anterior_deltoid, triceps]
+    secondary_muscles: [serratus_anterior]
+    equipment: [barbell, bench]
+    difficulty: intermediate
+    notes: "Primary upper body push. Medium grip (1.5× shoulder width). Tuck elbows ~45°."
+    caution: "Avoid very wide grip due to client's prior shoulder impingement history."
+
+  - id: db_bench_press
+    name: "Dumbbell Bench Press"
+    pattern: push_horizontal
+    primary_muscles: [chest, anterior_deltoid, triceps]
+    secondary_muscles: [serratus_anterior]
+    equipment: [dumbbells, bench]
+    difficulty: beginner
+    notes: "Greater range of motion and pec stretch vs barbell. Good variation and accessory work."
+
+  - id: incline_db_press
+    name: "Incline Dumbbell Press"
+    pattern: push_horizontal
+    primary_muscles: [upper_chest, anterior_deltoid, triceps]
+    secondary_muscles: []
+    equipment: [dumbbells, adjustable_bench]
+    difficulty: beginner
+    notes: "30-45° incline. Upper chest and front delt emphasis."
+
+  - id: push_up
+    name: "Push-Up"
+    pattern: push_horizontal
+    primary_muscles: [chest, triceps, anterior_deltoid]
+    secondary_muscles: [serratus_anterior, core]
+    equipment: []
+    difficulty: beginner
+    notes: "Bodyweight. Can be loaded (weighted vest, bands) or varied (close-grip, archer)."
+
+  # ─── PUSH PATTERN (VERTICAL) ──────────────────────────────────────────────
+
+  - id: ohp
+    name: "Overhead Press (OHP)"
+    pattern: push_vertical
+    primary_muscles: [anterior_deltoid, medial_deltoid, triceps]
+    secondary_muscles: [upper_chest, serratus_anterior, core]
+    equipment: [barbell]
+    difficulty: intermediate
+    notes: "Standing barbell press. Full body tension required. Watch shoulder position."
+    caution: "Monitor shoulder position. Client has resolved impingement — avoid wide grip, no BTN."
+
+  - id: db_shoulder_press
+    name: "Dumbbell Shoulder Press"
+    pattern: push_vertical
+    primary_muscles: [deltoids, triceps]
+    secondary_muscles: [upper_chest]
+    equipment: [dumbbells, bench]
+    difficulty: beginner
+    notes: "Seated or standing. More shoulder-friendly than barbell due to natural arc of motion."
+
+  # ─── PULL PATTERN (VERTICAL) ─────────────────────────────────────────────
+
+  - id: chin_up
+    name: "Chin-Up"
+    pattern: pull_vertical
+    primary_muscles: [lats, biceps]
+    secondary_muscles: [rear_deltoid, rhomboids, core]
+    equipment: [pull_up_bar]
+    difficulty: intermediate
+    notes: "Underhand grip. Client can do 10 BW reps. Add load via band or weighted vest."
+
+  - id: pull_up
+    name: "Pull-Up"
+    pattern: pull_vertical
+    primary_muscles: [lats]
+    secondary_muscles: [rear_deltoid, rhomboids, biceps]
+    equipment: [pull_up_bar]
+    difficulty: intermediate
+    notes: "Overhand grip, wider than shoulder width. Harder than chin-up for most people."
+
+  - id: band_pull_apart
+    name: "Band Pull-Apart"
+    pattern: pull_horizontal
+    primary_muscles: [rear_deltoid, rhomboids, mid_traps]
+    secondary_muscles: []
+    equipment: [resistance_bands]
+    difficulty: beginner
+    notes: "Shoulder health exercise. Use light band. Excellent daily corrective work."
+
+  # ─── PULL PATTERN (HORIZONTAL) ───────────────────────────────────────────
+
+  - id: db_row
+    name: "Dumbbell Row"
+    pattern: pull_horizontal
+    primary_muscles: [lats, rhomboids, rear_deltoid]
+    secondary_muscles: [biceps, traps]
+    equipment: [dumbbells, bench]
+    difficulty: beginner
+    notes: "Single-arm row supported on bench. Allows heavy loading and full ROM."
+
+  - id: barbell_row
+    name: "Barbell Bent-Over Row"
+    pattern: pull_horizontal
+    primary_muscles: [lats, rhomboids, mid_traps]
+    secondary_muscles: [biceps, erectors, hamstrings]
+    equipment: [barbell]
+    difficulty: intermediate
+    notes: "Overhand grip, hinge position. Significant posterior chain isometric demand."
+
+  # ─── CARRY PATTERN ────────────────────────────────────────────────────────
+
+  - id: farmers_carry
+    name: "Farmer's Carry"
+    pattern: carry
+    primary_muscles: [grip, traps, core]
+    secondary_muscles: [glutes, quads, calves]
+    equipment: [dumbbells, kettlebell]
+    difficulty: beginner
+    notes: "Walk with heavy implements. Great finisher. Use heaviest DBs available."
+
+  # ─── CORE ─────────────────────────────────────────────────────────────────
+
+  - id: plank
+    name: "Plank"
+    pattern: core
+    primary_muscles: [core, anterior_chain]
+    secondary_muscles: [glutes, shoulders]
+    equipment: []
+    difficulty: beginner
+    notes: "Isometric anterior core. Progress with longer holds or slight instability."
+
+  - id: ab_wheel
+    name: "Ab Wheel Rollout"
+    pattern: core
+    primary_muscles: [core, lats]
+    secondary_muscles: [shoulders, hip_flexors]
+    equipment: [ab_wheel]
+    difficulty: intermediate
+    notes: "Advanced anti-extension core. Start on knees."
+
+  - id: pallof_press
+    name: "Pallof Press"
+    pattern: core
+    primary_muscles: [core, obliques]
+    secondary_muscles: [shoulders]
+    equipment: [resistance_bands]
+    difficulty: beginner
+    notes: "Anti-rotation core exercise. Available with resistance bands."
+
+  - id: hanging_knee_raise
+    name: "Hanging Knee Raise"
+    pattern: core
+    primary_muscles: [hip_flexors, core]
+    secondary_muscles: [lats, grip]
+    equipment: [pull_up_bar]
+    difficulty: intermediate
+    notes: "Hip flexion from hang. Progress to hanging leg raise."

@@ -1,0 +1,126 @@
+periodization_models:
+
+  linear_progression:
+    name: "Linear Periodization"
+    description: "Increase load each week by a fixed increment. Best for novice to early intermediate lifters (< 2 years consistent training). Simple and effective."
+    best_for: [novice, early_intermediate]
+    mesocycle_length_weeks: 4
+    structure:
+      week_1:
+        intensity_pct_1rm: 70
+        sets_per_compound: 3
+        rep_range: "8-10"
+        rpe_target: 7
+        notes: "Technique focus. Moderate intensity."
+      week_2:
+        intensity_pct_1rm: 75
+        sets_per_compound: 3
+        rep_range: "6-8"
+        rpe_target: 7.5
+        notes: "Load increase."
+      week_3:
+        intensity_pct_1rm: 80
+        sets_per_compound: 4
+        rep_range: "5-6"
+        rpe_target: 8
+        notes: "Accumulation peak."
+      week_4:
+        intensity_pct_1rm: 60
+        sets_per_compound: 2
+        rep_range: "8-10"
+        rpe_target: 6
+        notes: "DELOAD — recovery week. Reduce volume by 50%."
+    progression_rule: "Increase load 2.5-5kg per week on upper body, 5-10kg on lower body if all reps completed at target RPE."
+
+  daily_undulating_periodization:
+    name: "Daily Undulating Periodization (DUP)"
+    description: "Vary intensity and rep targets within each week across training sessions. More stimulus variety maintains adaptation. Best for intermediate lifters."
+    best_for: [intermediate, advanced_intermediate]
+    mesocycle_length_weeks: 4
+    daily_targets:
+      strength_day:
+        intensity_pct_1rm: 85-90
+        sets: 4
+        reps: 3-5
+        rpe_target: 8.5
+        rest_min: 4
+      hypertrophy_day:
+        intensity_pct_1rm: 70-75
+        sets: 4
+        reps: 8-12
+        rpe_target: 7.5
+        rest_min: 2
+      power_day:
+        intensity_pct_1rm: 60-65
+        sets: 5
+        reps: 3
+        rpe_target: 7
+        rest_min: 3
+        notes: "Explosive intent on every rep. Speed work."
+    weekly_rotation:
+      day_1: strength_day
+      day_2: hypertrophy_day
+      day_3: rest
+      day_4: strength_day
+      day_5: power_day
+      day_6: rest
+      day_7: rest
+    progression_rule: "After completing all sets at target RPE, increase load by 2-3% next time this intensity day rolls around."
+    deload_week: 4
+
+  block_periodization:
+    name: "Block Periodization"
+    description: "Dedicate blocks to distinct physiological qualities (hypertrophy → strength → peaking). Best for advanced lifters or competition prep."
+    best_for: [advanced, competition_prep]
+    blocks:
+      accumulation:
+        goal: hypertrophy
+        weeks: 4
+        intensity_pct_1rm: 65-75
+        sets: 4-5
+        reps: "8-15"
+        rpe_target: 7-8
+      intensification:
+        goal: strength
+        weeks: 4
+        intensity_pct_1rm: 80-90
+        sets: 4-5
+        reps: "3-6"
+        rpe_target: 8-9
+      realization:
+        goal: peaking
+        weeks: 2
+        intensity_pct_1rm: 90-100
+        sets: 3-4
+        reps: "1-3"
+        rpe_target: 9-10
+
+splits:
+  upper_lower_4day:
+    name: "Upper/Lower 4-Day Split"
+    description: "4 sessions per week alternating upper and lower body. High frequency for main lifts (2×/week). Best for intermediate lifters focused on strength."
+    schedule:
+      Monday: "Upper A (strength focus: bench + row)"
+      Tuesday: "Lower A (strength focus: squat)"
+      Wednesday: rest
+      Thursday: "Upper B (volume focus: OHP + pull variations)"
+      Friday: "Lower B (hinge focus: deadlift + accessories)"
+      Saturday: rest
+      Sunday: rest
+    frequency_per_lift:
+      squat: 2
+      deadlift: 1
+      bench: 2
+      ohp: 1
+      vertical_pull: 2
+      horizontal_pull: 2
+
+  push_pull_legs_6day:
+    name: "Push/Pull/Legs 6-Day Split"
+    description: "6 sessions per week. High volume. Best for intermediate to advanced lifters with good recovery. Too much for this client's current schedule."
+    note: "Not recommended for this client — 4 days only."
+
+  full_body_3day:
+    name: "Full Body 3-Day Split"
+    description: "3 total body sessions per week. High frequency per muscle group. Good for beginners to early intermediate."
+    note: "Below client's current training tolerance — 4 days preferred."
